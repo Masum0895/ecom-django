@@ -21,6 +21,8 @@ def category(request,foo):
         messages.success(request,("That Category doesn't exist"))  
         return redirect('home')
 
+def category_summary(request):
+    return render(request, 'category_summary.html',{})
 
 def product(request,pk):
     product = Product.objects.get(id=pk)
