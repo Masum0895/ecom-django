@@ -1,4 +1,4 @@
-#🛍️ Django Ecommerce Store
+## 🛍️ Django Ecommerce Store
 A fully functional ecommerce website built with Django, featuring user authentication, shopping cart, product management, and checkout system.
 ## ✨ Features
 # 🛒 Core Features
