@@ -2,13 +2,13 @@
 A fully functional ecommerce website built with Django, featuring user authentication, shopping cart, product management, and checkout system.
 ## ✨ Features
 # 🛒 Core Features
--User registration & authentication system
--Product catalog with categories
--Shopping cart with session management
--Product search and filtering
--Order management system
--Online Payment
--Admin dashboard
+User registration & authentication system
+Product catalog with categories
+Shopping cart with session management
+Product search and filtering
+Order management system
+Online Payment
+Admin dashboard
 # 📱 User Features
 -User registration/login/logout
 -Profile management
