@@ -6,6 +6,7 @@ A simple ecommerce website built with Django.
 - User authentication
 - Product catalog
 - Shopping cart
+- Online Payment
 - Order management
 - Admin panel
 
