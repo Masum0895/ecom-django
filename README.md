@@ -10,32 +10,32 @@ A fully functional ecommerce website built with Django, featuring user authentic
 6. Online Payment
 7. Admin dashboard
 # 📱 User Features
--User registration/login/logout
--Profile management
--Order history tracking
--Shopping cart persistence
--Secure checkout process
+1. User registration/login/logout
+2. Profile management
+3. Order history tracking
+4. Shopping cart persistence
+5. Secure checkout process
 # 🎨 Admin Features
--Product management (CRUD)
--Category management
--Order management
--User management
--Sales dashboard
+1. Product management (CRUD)
+2. Category management
+3. Order management
+4. User management
+5. Sales dashboard
 # 🚀 Live Demo
 -coming soon
 # 📸 Screenshots
 -will be provided
 ## 🛠️ Technologies Used
 # Backend
--Python 3.11+
--Django 4.2+
--Django REST Framework (optional)
--PostgreSQL / SQLite
+1. Python 3.11+
+2. Django 4.2+
+3. Django REST Framework 
+4. PostgreSQL / SQLite
 # Frontend
--HTML5, CSS3, JavaScript
+1. HTML5, CSS3, JavaScript
 -Bootstrap 5
--jQuery
--Font Awesome icons
+2. jQuery
+
 ## 🏃‍♂️ Quick Start
 # Prerequisites
 -Python 3.11 or higher
@@ -51,11 +51,11 @@ cd ecom-django
 ## 📞 Support
 For support, email [masumbilla0895@gmail.com] or open an issue in the GitHub repository.
 ## 📊 Project Status
--✅ Phase 1: Basic ecommerce functionality (Completed)
--✅ Phase 2: User authentication (Completed)
--✅ Phase 3: Shopping cart (Completed)
--🔄 Phase 4: Payment integration (In Progress)
--📅 Phase 5: Advanced features (Planned)
+- ✅ Phase 1: Basic ecommerce functionality (Completed)
+- ✅ Phase 2: User authentication (Completed)
+- ✅ Phase 3: Shopping cart (Completed)
+- 🔄 Phase 4: Payment integration (In Progress)
+- 📅 Phase 5: Advanced features (Planned)
 
 ## 🏆 Contributors
 <a href="https://github.com/Masum0895/ecom-django/graphs/contributors"> <img src="https://contrib.rocks/image?repo=Masum0895/ecom-django" /> </a>
