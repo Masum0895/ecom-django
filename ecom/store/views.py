@@ -5,6 +5,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 #from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, UserInfoForm
+
+from payment.forms import ShippingForm
+from payment.models import ShippingAddress
+
 from django import forms
 from django.db.models import Q
 import json 
@@ -25,43 +29,55 @@ def search(request):
     else:
         return render(request,'search.html',{})
 
-
 def update_info(request):
     if request.user.is_authenticated:
         # Get or create profile
         current_user, created = Profile.objects.get_or_create(user=request.user)
         
-        # Debug: Always show a message to test
-        # messages.info(request, f"DEBUG - Created: {created}, User: {request.user.username}")
+        # Get Current User's Shipping Info
+        try:
+            shipping_user = ShippingAddress.objects.get(user=request.user)  # Use user field, not id
+        except ShippingAddress.DoesNotExist:
+            # Create shipping address if it doesn't exist
+            shipping_user = ShippingAddress.objects.create(user=request.user)
         
         if created:
             name = request.user.first_name or request.user.username
-            # Capitalize first letter
             name = name.capitalize()
             messages.success(request, f"🎉 Welcome, {name}! Your profile has been created. Please complete your information below.")
         else:
-            # Show a message even if profile already exists
             name = request.user.first_name or request.user.username
             name = name.capitalize()
             messages.info(request, f"👋 Welcome back, {name}! You can update your profile information below.")
         
         # Handle form
         if request.method == "POST":
+            # Get forms with POST data
             form = UserInfoForm(request.POST, instance=current_user)
-            if form.is_valid():
+            shipping_form = ShippingForm(request.POST, instance=shipping_user)
+            
+            if form.is_valid() or shipping_form.is_valid():
                 form.save()
+                shipping_form.save()
                 messages.success(request, '✅ Your profile has been updated successfully!')
                 return redirect('home')
             else:
                 # Show form errors
-                for field, errors in form.errors.items():
-                    for error in errors:
-                        messages.error(request, f"{field}: {error}")
+                if form.errors:
+                    for field, errors in form.errors.items():
+                        for error in errors:
+                            messages.error(request, f"{field}: {error}")
+                if shipping_form.errors:
+                    for field, errors in shipping_form.errors.items():
+                        for error in errors:
+                            messages.error(request, f"Shipping - {field}: {error}")
         else:
+            # GET request - initialize forms
             form = UserInfoForm(instance=current_user)
+            shipping_form = ShippingForm(instance=shipping_user)
         
-        # Pass form as 'form' to match template
-        return render(request, "update_info.html", {'form': form})
+        # Pass both forms to template
+        return render(request, "update_info.html", {'form': form, 'shipping_form': shipping_form})
     else:
         messages.error(request, "🔒 You must be logged in to access this page")
         return redirect('home')
